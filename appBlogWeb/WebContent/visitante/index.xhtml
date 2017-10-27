@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head></h:head>
+<body>
+
+	<p:panel header="MIS BLOGS">
+		<p:messages autoUpdate="true"></p:messages>
+		<h:panelGrid columns="2">
+			<h:form>
+				<p:commandButton icon="ui-icon-search" update="tabla1"
+					action="#{controllerVisitante.actionListenerConsultarBlogs()}"></p:commandButton>
+
+
+				<p:dataTable value="#{controllerVisitante.listaBlogs}" var="blog"
+					id="tabla1">
+					<p:column headerText="BLOG">
+						<h:outputText value="#{blog.nombreBlog}" />
+					</p:column>
+					<p:column headerText="DESCRIPCION">
+						<h:outputText value="#{blog.descripcion}" />
+					</p:column>
+					<p:column headerText="ARTICULOS" style="width:100px">
+						<p:commandButton icon="ui-icon-search"
+							action="#{controllerVisitante.actionListaArticulos(blog.idBlog)}"></p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</h:panelGrid>
+	</p:panel>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:event listener="#{controllerUsuario.actionComprobarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head></h:head>
+<body>
+	<div align="right">
+		<p:commandButton action="#{controllerUsuario.actionSalir()}"
+			icon="ui-icon-close" value="Cerrar sesión"></p:commandButton>
+	</div>
+	<p:panel header="MIS BLOGS">
+		<p:messages autoUpdate="true"></p:messages>
+		<h:panelGrid columns="2">
+			<h:form id="form1">
+				<h:panelGrid columns="2">
+					<h:outputText value="Nombre del blog:" />
+					<p:inputText value="#{controllerBlog.nombreBlog}" />
+					<h:outputText value="Descripción:" />
+					<p:inputTextarea value="#{controllerBlog.descripcionBlog}" />
+					<h:outputText value="Título del artículo:" />
+					<p:inputText value="#{controllerBlog.tituloArticulo}" />
+					<h:outputText value="Contenido:" />
+					<p:inputTextarea value="#{controllerBlog.contenidoArticulo}" />
+					<h:outputText value="" />
+					<p:commandButton value="Guardar blog"
+						actionListener="#{controllerBlog.actionListenerCrearBlog()}"
+						update=":form2:tabla1"></p:commandButton>
+						
+				</h:panelGrid>
+			</h:form>
+			<h:form id="form2">
+				<p:dataTable value="#{controllerBlog.listaBlogs}" var="blog"
+					id="tabla1">
+					<p:column headerText="BLOG">
+						<h:outputText value="#{blog.nombreBlog}" />
+					</p:column>
+					<p:column headerText="DESCRIPCION">
+						<h:outputText value="#{blog.descripcion}" />
+					</p:column>
+					<p:column headerText="ARTICULOS" style="width:100px">
+						<p:commandButton icon="ui-icon-search"
+							action="#{controllerBlog.actionListaArticulos(blog.idBlog)}"></p:commandButton>
+					</p:column>
+					<p:column headerText="Eliminar">
+						<p:commandButton icon="ui-icon-trash" update="@form"
+							actionListener="#{controllerBlog.actionListenerEliminarBlog(blog.idBlog)}"></p:commandButton>
+					</p:column>
+					<p:column headerText="Editar">
+						<p:commandButton icon="ui-icon-pencil" update="form3"
+							onclick="PF('dialogo1').show();"
+							actionListener="#{controllerBlog.actionListenerCargarUsuarioAdmin(blog)}"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</h:panelGrid>
+	</p:panel>
+	<p:dialog header="Edicitar Venta" widgetVar="dialogo1" id="dialogo1"
+		modal="true">
+		<h:form id="form3">
+			<p:messages autoUpdate="true"></p:messages>
+			<p:panelGrid columns="2">
+				<h:outputText value="Nombre del blog:" />
+				<p:inputText value="#{controllerBlog.nombreBlog}" />
+				<h:outputText value="Descripción:" />
+				<p:inputTextarea value="#{controllerBlog.descripcionBlog}" />
+				<p:commandButton value="Acutalizar blogger" icon="ui-icon-disk"
+					update="@form,:form2:tabla1"
+					action="#{controllerBlog.actionListenerActualizarBlog()}"></p:commandButton>
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+</body>
+</html>

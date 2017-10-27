@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<p:panel header="NUEVOS BLOGGERS" style="width:500px">
+		<h:form id="form">
+			<p:panelGrid columns="2">
+				<h:outputText value="ID de usuario:" />
+				<p:inputText value="#{controllerUsuarioCRUD.idUsuario}"
+					required="true" requiredMessage="Debe ingresar un ID de usuario."
+					maxlength="10"></p:inputText>
+				<h:outputText value="Contraseña:" />
+				<p:password value="#{controllerUsuarioCRUD.clave}" required="true"
+					requiredMessage="Ingrese una contraseña" maxlength="10" size="10"></p:password>
+				<h:outputText value="Confirmación de clave:" />
+				<p:password value="#{controllerUsuarioCRUD.confirmacionClave}"
+					requiredMessage="Confirme la contraseña." required="true"
+					maxlength="10" size="10"></p:password>
+				<h:outputText value="correo:" />
+				<p:inputText value="#{controllerUsuarioCRUD.correo}" required="true"
+					requiredMessage="Debe ingresar un correo."></p:inputText>
+				<p:commandButton value="Registrar nuevo blogger" icon="ui-icon-disk"
+					update="@form,:form2:tabla1"
+					action="#{controllerUsuarioCRUD.actionRegistrarBloggerAdmin()}"></p:commandButton>
+			</p:panelGrid>
+		</h:form>
+	</p:panel>
+	<p:growl autoUpdate="true"></p:growl>
+	<h:form id="form2">
+
+		<p:dataTable value="#{controllerUsuarioCRUD.lista}" var="u"
+			id="tabla1">
+			<p:column headerText="Id_Usuario">
+				<h:outputText value="#{u.idUsuario}" />
+			</p:column>
+			<p:column headerText="CORREO">
+				<h:outputText value="#{u.correo}" />
+			</p:column>
+			<p:column headerText="ACTIVO">
+				<h:outputText value="#{u.activo}" />
+			</p:column>
+			<p:column headerText="Eliminar">
+				<p:commandButton icon="ui-icon-trash" update="@form"
+					actionListener="#{controllerUsuarioCRUD.actionListenerEliminarUsuarioAdmin(u.idUsuario)}"></p:commandButton>
+			</p:column>
+			<p:column headerText="Editar">
+				<p:commandButton icon="ui-icon-pencil" update="form3"
+					onclick="PF('dialogo1').show();"
+					actionListener="#{controllerUsuarioCRUD.actionListenerCargarUsuarioAdmin(u)}"></p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+
+	<p:dialog header="Edicitar Venta" widgetVar="dialogo1" id="dialogo1"
+		modal="true">
+		<h:form id="form3">
+			<p:messages autoUpdate="true"></p:messages>
+			<p:panelGrid columns="2">
+				<h:outputText value="ID de usuario:" />
+				<p:inputText value="#{controllerUsuarioCRUD.idUsuario}"
+					required="true" requiredMessage="Debe ingresar un ID de usuario."
+					maxlength="10"></p:inputText>
+				<h:outputText value="Contraseña:" />
+				<p:password value="#{controllerUsuarioCRUD.clave}" required="true"
+					requiredMessage="Ingrese una contraseña" maxlength="10" size="10"></p:password>
+				<h:outputText value="Confirmación de clave:" />
+				<p:password value="#{controllerUsuarioCRUD.confirmacionClave}"
+					requiredMessage="Confirme la contraseña." required="true"
+					maxlength="10" size="10"></p:password>
+				<h:outputText value="correo:" />
+				<p:inputText value="#{controllerUsuarioCRUD.correo}" required="true"
+					requiredMessage="Debe ingresar un correo."></p:inputText>
+				<p:commandButton value="Acutalizar blogger" icon="ui-icon-disk"
+					update="@form,:form2:tabla1"
+					action="#{controllerUsuarioCRUD.actionListenerActualizarUsuarioAdmin()}"></p:commandButton>
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+</body>
+</html>

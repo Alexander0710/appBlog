@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form id="form">
+		<p:panel header="LISTA DE ARTICULOS">
+			<p:dataTable value="#{controllerBlog.listaArticulo}" var="a"
+				id="tabla1">
+				<p:column headerText="id_Articulo">
+					<h:outputText value="#{a.idArticulo}" />
+				</p:column>
+				<p:column headerText="Blog">
+					<h:outputText value="#{a.blog.nombreBlog}" />
+				</p:column>
+				<p:column headerText="Titulo">
+					<h:outputText value="#{a.titulo}" />
+				</p:column>
+				<p:column headerText="Contenido">
+					<h:outputText value="#{a.contenido}" />
+				</p:column>
+				<p:column headerText="Likes">
+					<h:outputText value="#{a.likes}" />
+				</p:column>
+				<p:column headerText="Recaudado">
+					<h:outputText value="#{a.recaudado}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</p:panel>
+	</h:form>
+</body>
+</html>

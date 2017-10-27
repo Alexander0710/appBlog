@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#admin#index.xhtml" PATH="/admin/index.xhtml"
+  SHAPE="194,35,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#index.xhtml:0" NAME="item"
+   PATH="/admin/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="AdministrarBlogs::#admin#AdministrarBlogs.xhtml" NAME="output"
+    PATH="/admin/AdministrarBlogs.xhtml"
+    TARGET="rules:#admin#AdministrarBlogs.xhtml"
+    TITLE="AdministrarBlogs" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="AdministrarUsuariosBlogger::#admin#AdministrarUsuariosBlogger.xhtml"
+    NAME="output1" PATH="/admin/AdministrarUsuariosBlogger.xhtml"
+    TARGET="rules:#admin#AdministrarUsuariosBlogger.xhtml"
+    TITLE="AdministrarUsuariosBlogger" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#blog#index.xhtml" PATH="/blog/index.xhtml"
+  SHAPE="200,120,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#blog#index.xhtml:0" NAME="item"
+   PATH="/blog/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Articulos::#blog#Articulos.xhtml"
+    NAME="output" PATH="/blog/Articulos.xhtml"
+    TARGET="rules:#blog#Articulos.xhtml" TITLE="Articulos" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#visitante#index.xhtml"
+  PATH="/visitante/index.xhtml" SHAPE="200,192,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#visitante#index.xhtml:0" NAME="item"
+   PATH="/visitante/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="ArticulosVisitante::#visitante#ArticulosVisitante.xhtml"
+    NAME="output" PATH="/visitante/ArticulosVisitante.xhtml"
+    TARGET="rules:#visitante#ArticulosVisitante.xhtml"
+    TITLE="ArticulosVisitante" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#AdministrarBlogs.xhtml"
+  PATH="/admin/AdministrarBlogs.xhtml" SHAPE="379,10,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#admin#AdministrarUsuariosBlogger.xhtml"
+  PATH="/admin/AdministrarUsuariosBlogger.xhtml" SHAPE="388,58,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#blog#Articulos.xhtml"
+  PATH="/blog/Articulos.xhtml" SHAPE="384,112,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#visitante#ArticulosVisitante.xhtml"
+  PATH="/visitante/ArticulosVisitante.xhtml" SHAPE="420,197,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#admin#index.xhtml" NAME="output"
+    PATH="/admin/index.xhtml" TARGET="rules:#admin#index.xhtml"
+    TITLE="index" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="index::#blog#index.xhtml" NAME="output1"
+    PATH="/blog/index.xhtml" TARGET="rules:#blog#index.xhtml"
+    TITLE="index" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="index::#visitante#index.xhtml"
+    NAME="output2" PATH="/visitante/index.xhtml"
+    TARGET="rules:#visitante#index.xhtml" TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
